@@ -9,9 +9,12 @@
   <body>
     <%- include('./Partials/navbar') %>
     <h1>Home</h1>
+    <%- include('./Partials/back-button') %>
+
     <section class="categories">
       <% subcategories.forEach(subcategory =>{ %>
       <div class="category">
+        <img src="<%= subcategory.image_url %>" alt="" />
         <a href="/part?subcategory=<%=subcategory.name%>"
           ><%=subcategory.name%></a
         >
