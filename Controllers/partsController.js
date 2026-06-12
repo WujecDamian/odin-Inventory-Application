@@ -2,7 +2,7 @@ const db = require("../Models/queries");
 
 const getParts = async (req, res) => {
   console.log(req.query);
-  if (!req.query.name) {
+  if (!req.query.subcategory) {
     const parts = await db.getAllParts();
     res.render("parts", { parts });
   } else {

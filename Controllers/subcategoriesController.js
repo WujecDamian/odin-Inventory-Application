@@ -1,7 +1,7 @@
 const db = require("../Models/queries");
 
 const getSubcategories = async (req, res) => {
-  if (!req.query.name) {
+  if (!req.query.category) {
     const subcategories = await db.getAllSubcategories();
     res.render("subcategories", { subcategories });
   } else {
