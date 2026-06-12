@@ -17,6 +17,10 @@
         <a href="/part?<%=part.name%>"><%=part.brand%><%=part.model%></a>
       </div>
       <%})%>
+      <button onclick="" class="add__category__btn">+</button>
+
+      <%- include('./Partials/modal/modal', {type: "part",typeForm:"partForm"});
+      %>
     </section>
     <%- include('./Partials/footer') %>
   </body>
