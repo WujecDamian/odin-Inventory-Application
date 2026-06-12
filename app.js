@@ -8,6 +8,15 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
 
+//Configure Cloudinary
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  secure: true,
+});
+
+console.log(cloudinary.config());
+
 //Routes
 const homeRoute = require("./Routes/homeRoutes");
 const subcategoryRoute = require("./Routes/subcategoriesRoutes");
