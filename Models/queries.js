@@ -12,7 +12,10 @@ async function getSubcategories(category) {
   );
   return rows;
 }
-
+async function getAllSubcategories() {
+  const { rows } = await pool.query("SELECT * FROM subcategories");
+  return rows;
+}
 async function getParts(subcategory) {
   const { rows } = await pool.query(
     "SELECT * FROM parts WHERE subcategory_id = (SELECT id FROM subcategories WHERE name = ($1))",
@@ -20,9 +23,14 @@ async function getParts(subcategory) {
   );
   return rows;
 }
-
+async function getAllParts() {
+  const { rows } = await pool.query("SELECT * FROM parts");
+  return rows;
+}
 module.exports = {
   getCategories,
   getSubcategories,
+  getAllSubcategories,
   getParts,
+  getAllParts,
 };
