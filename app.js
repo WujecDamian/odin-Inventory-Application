@@ -10,8 +10,12 @@ app.use(express.static("public"));
 
 //Routes
 const homeRoute = require("./Routes/homeRoutes");
+const subcategoryRoute = require("./Routes/subcategoriesRoutes");
+const partRoute = require("./Routes/partsRoutes");
 
 app.use("/", homeRoute);
+app.use("/subcategory", subcategoryRoute);
+app.use("/part", partRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
