@@ -4,12 +4,16 @@ require("dotenv").config();
 const SQL = `
 CREATE TABLE IF NOT EXISTS categories (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name VARCHAR (255) NOT NULL UNIQUE
+    name VARCHAR (255) NOT NULL UNIQUE,
+    image_url TEXT,
+    image_public_id TEXT
 );
 
 CREATE TABLE IF NOT EXISTS subcategories(
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR (255) NOT NULL,
+    image_url TEXT,
+    image_public_id TEXT,
     category_id INTEGER NOT NULL REFERENCES categories(id)
 );
 
@@ -48,34 +52,34 @@ CREATE TABLE IF NOT EXISTS subcategory_attributes(
     FOREIGN KEY (attribute_id) REFERENCES attributes(id)
 );
 
-INSERT INTO categories (name) VALUES
-('Engine'),
-('Braking System'),
-('Suspension'),
-('Electrical'),
-('Fluids'),
-('Filters');
+INSERT INTO categories (name,image_url,image_public_id) VALUES
+('Engine','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263057/engine_rd57vv.webp','engine_rd57vv'),
+('Braking System','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263068/braking-system_ekffbd.png','braking-system_ekffbd'),
+('Suspension','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263060/suspension_heuum9.png','suspension_heuum9'),
+('Electrical','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263063/electrical_feiums.png','electrical_feiums'),
+('Fluids','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263060/fluids_hndjrg.avif','fluids_hndjrg'),
+('Filters','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263060/filters_bzlsyl.png','filters_bzlsyl');
 
-INSERT INTO subcategories (name, category_id) VALUES
-('Engine Oil', 5),
-('Coolant', 5),
-('Brake Fluid', 5),
+INSERT INTO subcategories (name,image_url,image_public_id, category_id) VALUES
+('Engine Oil','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263138/engine_oil_g6ywtf.jpg','engine_oil_g6ywtf', 5),
+('Coolant','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263085/coolant_vxjmbq.jpg','coolant_vxjmbq', 5),
+('Brake Fluid','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263140/brake-fluid_iwqnlc.png','brake-fluid_iwqnlc', 5),
 
-('Brake Pads', 2),
-('Brake Discs', 2),
+('Brake Pads','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263108/brake-pads_ruyvm2.webp','brake-pads_ruyvm2', 2),
+('Brake Discs','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263075/brake_discs_dlaqk8.png','brake_discs_dlaqk8', 2),
 
-('Shock Absorbers', 3),
-('Springs', 3),
+('Shock Absorbers','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263111/shock-absorbers_tolcpr.webp','shock-absorbers_tolcpr', 3),
+('Springs','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263115/springs_rioeaw.webp','springs_rioeaw', 3),
 
-('Alternators', 4),
-('Starter Motors', 4),
-('Car Batteries', 4),
+('Alternators','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263078/alternator_ke6hax.png','alternator_ke6hax', 4),
+('Starter Motors','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263116/starter-motors_tca5pi.webp','starter-motors_tca5pi', 4),
+('Car Batteries','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263088/car-battery_yzwbow.webp','car-battery_yzwbow', 4),
 
-('Air Filters', 6),
-('Oil Filters', 6),
+('Air Filters','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263117/air-filter_il4pju.png','air-filter_il4pju', 6),
+('Oil Filters','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263081/oil-filter_zh2lvw.avif','oil-filter_zh2lvw', 6),
 
-('Spark Plugs', 1),
-('Timing Belts', 1);
+('Spark Plugs','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263080/spark-plugs_g05no1.png','spark-plugs_g05no1', 1),
+('Timing Belts','https://res.cloudinary.com/dzictnnqo/image/upload/v1781263107/timing-belt_aiwiir.png','timing-belt_aiwiir', 1);
 
 INSERT INTO attributes (name) VALUES
 ('Viscosity'),
