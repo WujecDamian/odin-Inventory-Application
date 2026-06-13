@@ -1,7 +1,6 @@
 const db = require("../Models/queries");
 
 const getParts = async (req, res) => {
-  console.log(req.query);
   if (!req.query.subcategory) {
     const parts = await db.getAllParts();
     const subcategories = await db.getAllSubcategories();
