@@ -45,7 +45,7 @@ async function getAllParts() {
 
 //INSERTS
 
-async function createCategory(name, image) {
+async function createCategory(name, imageUrl, publicId) {
   pool.query(
     "INSERT INTO categories (name,image_url,image_public_id) VALUES ($1,$2,$3)",
     [name, imageUrl, publicId],
