@@ -12,10 +12,7 @@ const getSubcategories = async (req, res) => {
   } else {
     const category = req.query.category;
     const categoryObj = await db.getCategory(category);
-    console.log(typeof category);
-    console.log(
-      `category: ${categoryObj} | name: ${categoryObj.name} | id: ${categoryObj.id}`,
-    );
+
     const subcategories = await db.getSubcategories(category);
     res.render("subcategories", {
       subcategories,
