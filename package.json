@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/WujecDamian/odin-Inventory-Application#readme",
   "dependencies": {
+    "body-parser": "^2.2.2",
     "cloudinary": "^2.10.0",
     "dotenv": "^17.4.2",
     "ejs": "^6.0.1",
