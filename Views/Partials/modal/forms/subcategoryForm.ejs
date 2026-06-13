@@ -1,4 +1,13 @@
+<input type="hidden" name="type" value="subcategory" />
+<input type="file" name="image" id="image" />
 <label for="name">Subcategory name</label>
 <input type="text" name="name" />
-// export
-CLOUDINARY_URL=cloudinary://889484284448981:*********************************@CLOUD_NAME
+<label for="category">Parent category</label>
+<select name="category" id="category">
+  <% if(categoryObj!==undefined){%>
+  <option value="<%=categoryObj.id%>"><%=categoryObj.name%></option>
+  <% } else if(categories!==undefined){%>
+  <%categories.forEach(singleCategory=>{%>
+  <option value="<%=singleCategory.id%>"><%=singleCategory.name%></option>
+  <%})%> <%}%>
+</select>
