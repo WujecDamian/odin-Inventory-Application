@@ -1,7 +1,14 @@
 <input type="hidden" name="type" value="part" />
+<label for="image">Image</label>
 <input type="file" name="image" id="image" />
-<label for="name">Part name</label>
-<input type="text" name="name" />
+<label for="brand">Brand</label>
+<input type="text" name="brand" />
+<label for="model">Model</label>
+<input type="text" name="model" />
+<label for="price">Price ($)</label>
+<input type="number" name="price" />
+<label for="quantity">Quantity</label>
+<input type="number" name="quantity" />
 <label for="subcategory">Parent subcategory</label>
 <select name="subcategory" id="subcategory">
   <% if(subcategoryObj!==undefined){%>
