@@ -6,11 +6,11 @@
 <label for="model">Model</label>
 <input type="text" name="model" />
 <label for="price">Price ($)</label>
-<input type="number" name="price" />
+<input type="number" name="price" step="0.01" />
 <label for="quantity">Quantity</label>
 <input type="number" name="quantity" />
-<label for="subcategory">Parent subcategory</label>
-<select name="subcategory" id="subcategory">
+<label for="subcategoryId">Parent subcategory</label>
+<select name="subcategoryId" id="subcategory">
   <% if(subcategoryObj!==undefined){%>
   <option value="<%=subcategoryObj.id%>"><%=subcategoryObj.name%></option>
   <% } else if(subcategories!==undefined){%>

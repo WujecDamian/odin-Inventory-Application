@@ -4,11 +4,15 @@ const db = require("../Models/queries");
 
 const handleForm = async (req, res) => {
   let uploadedImage = null;
+  let folderDest = "";
 
   try {
     const type = req.query.type;
     if (type === "part") {
-      const chosenSubcategory = req.body.subcategory;
+      const chosenSubcategory = await db.getSubcategoryById(
+        req.body.subcategoryId,
+      );
+      folderDest = chosenSubcategory;
     }
 
     if (!["category", "subcategory", "part"].includes(type)) {
@@ -22,7 +26,6 @@ const handleForm = async (req, res) => {
     if (req.file) {
       const filebase64 = req.file.buffer.toString("base64");
       const file = `data:${req.file.mimetype};base64,${filebase64}`;
-      let folderDest = "";
       switch (type) {
         case "category":
           folderDest = "categories";
@@ -31,7 +34,6 @@ const handleForm = async (req, res) => {
           folderDest = "subcategories";
           break;
         case "part":
-          folderDest = chosenSubcategory;
           break;
         default:
           break;
@@ -60,13 +62,21 @@ const handleForm = async (req, res) => {
 
       await db.createSubcategory(name, categoryId, imageUrl, publicId);
     } else if (type === "part") {
-      const { price, subcategory_id } = req.body;
+      const { brand, model, price, quantity, subcategoryId } = req.body;
 
       if (!price) {
         return res.status(400).send("Price required");
       }
 
-      await db.createPart();
+      await db.createPart(
+        brand,
+        model,
+        price,
+        quantity,
+        imageUrl,
+        publicId,
+        subcategoryId,
+      );
     }
 
     res.redirect("/");

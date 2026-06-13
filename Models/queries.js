@@ -27,6 +27,13 @@ async function getSubcategory(name) {
   );
   return rows[0];
 }
+async function getSubcategoryById(id) {
+  const { rows } = await pool.query(
+    "SELECT name FROM subcategories WHERE id = $1",
+    [id],
+  );
+  return rows[0].name;
+}
 async function getAllSubcategories() {
   const { rows } = await pool.query("SELECT * FROM subcategories");
   return rows;
@@ -57,10 +64,18 @@ async function createSubcategory(name, categoryId, imageUrl, publicId) {
     [name, imageUrl, publicId, categoryId],
   );
 }
-async function createPart(name, image) {
+async function createPart(
+  brand,
+  model,
+  price,
+  quantity,
+  imageUrl,
+  publicId,
+  subcategoryId,
+) {
   pool.query(
-    "INSERT INTO categories (name,image_url,image_public_id) VALUES ($1,$2,$3)",
-    [name, imageUrl, publicId],
+    "INSERT INTO parts (brand,model,price,quantity,image_url,image_public_id,subcategory_id) VALUES ($1,$2,$3,$4,$5,$6,$7)",
+    [brand, model, price, quantity, imageUrl, publicId, subcategoryId],
   );
 }
 
@@ -69,6 +84,7 @@ module.exports = {
   getCategory,
   getSubcategories,
   getSubcategory,
+  getSubcategoryById,
   getAllSubcategories,
   getParts,
   getAllParts,
