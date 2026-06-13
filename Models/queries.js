@@ -20,6 +20,13 @@ async function getSubcategories(category) {
   );
   return rows;
 }
+async function getSubcategory(name) {
+  const { rows } = await pool.query(
+    "SELECT * FROM subcategories WHERE name = $1",
+    [name],
+  );
+  return rows[0];
+}
 async function getAllSubcategories() {
   const { rows } = await pool.query("SELECT * FROM subcategories");
   return rows;
@@ -39,8 +46,10 @@ async function getAllParts() {
 //INSERTS
 
 async function createCategory(name, image) {
-  const { rows } = await pool.query("SELECT * FROM categories");
-  return rows;
+  pool.query(
+    "INSERT INTO categories (name,image_url,image_public_id) VALUES ($1,$2,$3)",
+    [name, imageUrl, publicId],
+  );
 }
 async function createSubcategory(name, image) {
   const { rows } = await pool.query("SELECT * FROM subcategories");
@@ -55,6 +64,7 @@ module.exports = {
   getCategories,
   getCategory,
   getSubcategories,
+  getSubcategory,
   getAllSubcategories,
   getParts,
   getAllParts,
