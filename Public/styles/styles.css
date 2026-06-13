@@ -33,3 +33,23 @@ img {
   aspect-ratio: 1/1;
   object-fit: fill;
 }
+.form__modal { /* *IT'S TEMPORARY CSS FOR FORM MODAL !ONLY FOR development PHASE! */
+  background-color: rgb(228, 244, 255);
+  border: 2px solid rgb(243, 243, 243);
+  border-radius: 1rem;
+  margin: 0 auto;
+  aspect-ratio: 1/1;
+  width: 500px;
+  padding: 1rem;
+  input {
+    width: 100%
+    padding: 1rem;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0.25rem;
+    gap: 0.5rem;
+  }
+}
