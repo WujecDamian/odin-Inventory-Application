@@ -12,7 +12,9 @@ const handleForm = async (req, res) => {
       const chosenSubcategory = await db.getSubcategoryById(
         req.body.subcategoryId,
       );
-      folderDest = chosenSubcategory;
+      const chosenSubcategoryLowerCase = chosenSubcategory.toLowerCase();
+
+      folderDest = chosenSubcategoryLowerCase;
     }
 
     if (!["category", "subcategory", "part"].includes(type)) {
@@ -22,7 +24,6 @@ const handleForm = async (req, res) => {
     let imageUrl = null;
     let publicId = null;
 
-    // 📸 Upload only if file exists
     if (req.file) {
       const filebase64 = req.file.buffer.toString("base64");
       const file = `data:${req.file.mimetype};base64,${filebase64}`;
@@ -39,7 +40,7 @@ const handleForm = async (req, res) => {
           break;
       }
       uploadedImage = await cloudinary.uploader.upload(file, {
-        folder: "products",
+        folder: "/inventory_app(carparts)/" + folderDest,
       });
 
       imageUrl = uploadedImage.secure_url;
@@ -78,12 +79,10 @@ const handleForm = async (req, res) => {
         subcategoryId,
       );
     }
-
-    res.redirect("/");
+    res.redirect(req.get("Referrer"));
   } catch (err) {
     console.error(err);
 
-    // 🧹 cleanup if DB failed AFTER upload
     if (uploadedImage) {
       await cloudinary.uploader.destroy(uploadedImage.public_id);
     }
