@@ -3,7 +3,7 @@
 <label for="name">Subcategory name</label>
 <input type="text" name="name" />
 <label for="category">Parent category</label>
-<select name="category" id="category">
+<select name="categoryId" id="category">
   <% if(categoryObj!==undefined){%>
   <option value="<%=categoryObj.id%>"><%=categoryObj.name%></option>
   <% } else if(categories!==undefined){%>

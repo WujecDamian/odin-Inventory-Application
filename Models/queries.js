@@ -51,13 +51,17 @@ async function createCategory(name, imageUrl, publicId) {
     [name, imageUrl, publicId],
   );
 }
-async function createSubcategory(name, image) {
-  const { rows } = await pool.query("SELECT * FROM subcategories");
-  return rows;
+async function createSubcategory(name, categoryId, imageUrl, publicId) {
+  pool.query(
+    "INSERT INTO subcategories (name,image_url,image_public_id,category_id) VALUES ($1,$2,$3,$4)",
+    [name, imageUrl, publicId, categoryId],
+  );
 }
 async function createPart(name, image) {
-  const { rows } = await pool.query("SELECT * FROM parts");
-  return rows;
+  pool.query(
+    "INSERT INTO categories (name,image_url,image_public_id) VALUES ($1,$2,$3)",
+    [name, imageUrl, publicId],
+  );
 }
 
 module.exports = {
