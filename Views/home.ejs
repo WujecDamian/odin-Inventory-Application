@@ -14,6 +14,8 @@
     <section class="categories">
       <% categories.forEach(category =>{ %>
       <div class="category">
+        <img src="<%= category.image_url %>" alt="" />
+
         <a href="/subcategory?category=<%=category.name%>"
           ><%=category.name%></a
         >
