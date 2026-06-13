@@ -1,2 +1,13 @@
+<input type="hidden" name="type" value="part" />
+<input type="file" name="image" id="image" />
 <label for="name">Part name</label>
 <input type="text" name="name" />
+<label for="subcategory">Parent subcategory</label>
+<select name="subcategory" id="subcategory">
+  <% if(subcategoryObj!==undefined){%>
+  <option value="<%=subcategoryObj.id%>"><%=subcategoryObj.name%></option>
+  <% } else if(subcategories!==undefined){%>
+  <%subcategories.forEach(singleSubcategory=>{%>
+  <option value="<%=singleSubcategory.id%>"><%=singleSubcategory.name%></option>
+  <%})%> <%}%>
+</select>
