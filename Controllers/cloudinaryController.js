@@ -1,10 +1,16 @@
 const upload = require("../utils/imageUploadMiddleware");
 const cloudinary = require("../utils/cloudinaryConfig");
 const db = require("../Models/queries");
+const { body, validationResult } = require("express-validator");
 
 const handleForm = async (req, res) => {
   let uploadedImage = null;
   let folderDest = "";
+
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    return res.status(400).json({ result: result.array() });
+  }
 
   try {
     const type = req.query.type;
