@@ -29,10 +29,21 @@ const editSubcategory = async (req, res) => {
   const categoryId = req.body.categoryId;
 
   await db.updateSubcategory(subcategoryId, name, categoryId);
-  res.redirect(req.get("Referrer"));
+  setTimeout(() => {
+    res.redirect(req.get("Referrer"));
+  }, 500);
+};
+
+const deleteSubcategory = async (req, res) => {
+  const subcategoryId = req.params.id;
+  await db.deleteSubcategory(subcategoryId);
+  setTimeout(() => {
+    res.redirect(req.get("Referrer"));
+  }, 500);
 };
 
 module.exports = {
   getSubcategories,
   editSubcategory,
+  deleteSubcategory,
 };

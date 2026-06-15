@@ -9,4 +9,6 @@ router.get("/", subcategoryController.getSubcategories);
 
 router.post("/edit/:id", subcategoryController.editSubcategory);
 
+router.get("/delete/:id", subcategoryController.deleteSubcategory);
+
 module.exports = router;
