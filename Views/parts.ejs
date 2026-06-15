@@ -20,6 +20,7 @@
         <button>Edit</button>
         <%-include('./Partials/modal/forms/editForms/editModal',{typeEditForm:"partEditForm",
         Id:part.id,toEdit:"part" }) %>
+        <a href="part/delete/<%=part.id%>"><button>Delete</button></a>
       </div>
       <%})%>
       <button onclick="" class="add__category__btn">+</button>

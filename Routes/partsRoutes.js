@@ -9,4 +9,6 @@ router.get("/", partsController.getParts);
 
 router.post("/edit/:id", partsController.editPart);
 
+router.get("/delete/:id", partsController.deletePart);
+
 module.exports = router;

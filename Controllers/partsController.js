@@ -30,10 +30,21 @@ const editPart = async (req, res) => {
   const subcategoryId = req.body.subcategoryId;
   console.log(partId, brand, model, price, quantity, subcategoryId);
   await db.updatePart(brand, model, price, quantity, subcategoryId, partId);
-  res.redirect(req.get("Referrer"));
+  setTimeout(() => {
+    res.redirect(req.get("Referrer"));
+  }, 500);
+};
+
+const deletePart = async (req, res) => {
+  const partId = req.params.id;
+  await db.deletePart(partId);
+  setTimeout(() => {
+    res.redirect(req.get("Referrer"));
+  }, 500);
 };
 
 module.exports = {
   getParts,
   editPart,
+  deletePart,
 };
