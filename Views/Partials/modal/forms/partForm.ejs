@@ -2,15 +2,15 @@
 <label for="image">Image</label>
 <input type="file" name="image" id="image" />
 <label for="brand">Brand</label>
-<input type="text" name="brand" />
+<input type="text" name="brand" required />
 <label for="model">Model</label>
-<input type="text" name="model" />
+<input type="text" name="model" required />
 <label for="price">Price ($)</label>
-<input type="number" name="price" step="0.01" />
+<input type="number" name="price" step="0.01" required />
 <label for="quantity">Quantity</label>
-<input type="number" name="quantity" />
+<input type="number" name="quantity" required />
 <label for="subcategoryId">Parent subcategory</label>
-<select name="subcategoryId" id="subcategory">
+<select name="subcategoryId" id="subcategory" required>
   <% if(subcategoryObj!==undefined){%>
   <option value="<%=subcategoryObj.id%>"><%=subcategoryObj.name%></option>
   <% } else if(subcategories!==undefined){%>

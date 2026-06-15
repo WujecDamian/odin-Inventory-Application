@@ -1,9 +1,9 @@
 <input type="hidden" name="type" value="subcategory" />
 <input type="file" name="image" id="image" />
 <label for="name">Subcategory name</label>
-<input type="text" name="name" />
+<input type="text" name="name" required />
 <label for="category">Parent category</label>
-<select name="categoryId" id="category">
+<select name="categoryId" id="category" required>
   <% if(categoryObj!==undefined){%>
   <option value="<%=categoryObj.id%>"><%=categoryObj.name%></option>
   <% } else if(categories!==undefined){%>
