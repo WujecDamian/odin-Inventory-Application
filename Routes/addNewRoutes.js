@@ -4,12 +4,12 @@ const upload = require("../utils/imageUploadMiddleware");
 const cloudinary = require("../utils/cloudinaryConfig");
 
 const formController = require("../Controllers/cloudinaryController");
-const validateForm = require("../validators/newValidator");
+const validator = require("../validators/newValidator");
 
 router.post(
   "/",
   upload.single("image"),
-  validateForm,
+  validator.validateForm,
   formController.handleForm,
 );
 

@@ -78,5 +78,11 @@ const validateForm = (req, res, next) => {
 
   return Promise.all(rules.map((rule) => rule.run(req))).then(() => next());
 };
+const validateEditForm = (req, res, next) => {
+  const type = req.body.type;
+  const rules = validators[type] || [];
 
-module.exports = validateForm;
+  return Promise.all(rules.map((rule) => rule.run(req))).then(() => next());
+};
+
+module.exports = { validateForm, validateEditForm };
