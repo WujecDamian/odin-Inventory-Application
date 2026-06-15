@@ -11,10 +11,21 @@ const editCategory = async (req, res) => {
   console.log(categoryId);
   console.log(req.body.name);
   await db.updateCategory(categoryId, name);
-  res.redirect(req.get("Referrer"));
+  setTimeout(() => {
+    res.redirect(req.get("Referrer"));
+  }, 500);
+};
+
+const deleteCategory = async (req, res) => {
+  const categoryId = req.params.id;
+  await db.deleteCategory(categoryId);
+  setTimeout(() => {
+    res.redirect(req.get("Referrer"));
+  }, 500);
 };
 
 module.exports = {
   getCategories,
   editCategory,
+  deleteCategory,
 };

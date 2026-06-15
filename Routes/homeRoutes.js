@@ -9,4 +9,6 @@ router.get("/", homeController.getCategories);
 
 router.post("/edit/:id", homeController.editCategory);
 
+router.get("/delete/:id", homeController.deleteCategory);
+
 module.exports = router;
