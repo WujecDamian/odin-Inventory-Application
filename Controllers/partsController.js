@@ -5,14 +5,14 @@ const getParts = async (req, res) => {
     const parts = await db.getAllParts();
     const subcategories = await db.getAllSubcategories();
 
-    res.render("parts", { parts, subcategoryObj: undefined, subcategories });
+    res.render("./parts", { parts, subcategoryObj: undefined, subcategories });
   } else {
     const subcategory = req.query.subcategory;
     const parts = await db.getParts(subcategory);
     const allSubcategories = await db.getAllSubcategories();
     const subcategoryObj = await db.getSubcategory(req.query.subcategory);
 
-    res.render("parts", {
+    res.render("./parts", {
       parts,
       subcategoryObj,
       allSubcategories,

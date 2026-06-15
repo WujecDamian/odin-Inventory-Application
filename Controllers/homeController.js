@@ -2,7 +2,7 @@ const db = require("../Models/queries");
 
 const getCategories = async (req, res) => {
   const categories = await db.getCategories();
-  res.render("home", { categories: categories });
+  res.render("./home", { categories: categories });
 };
 
 const editCategory = async (req, res) => {
