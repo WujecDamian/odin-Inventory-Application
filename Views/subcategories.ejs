@@ -20,7 +20,7 @@
         >
         <button>Edit</button>
         <%-include('./Partials/modal/forms/editForms/editModal',{typeEditForm:"subcategoryEditForm",
-        Id:subcategory.id,toEdit:"subcategory" }) %>
+        Id:subcategory.id,toEdit:"subcategory",subcategory }) %>
         <a href="/subcategory/delete/<%=subcategory.id%>"
           ><button>Delete</button></a
         >

@@ -1,6 +1,12 @@
-<input type="hidden" name="type" value="category" />
+<input type="hidden" name="type" value="subcategory" />
 <label for="name">Category name</label>
-<input type="text" name="name" id="name" required />
+<input
+  type="text"
+  name="name"
+  id="name"
+  value="<%=subcategory.name%>"
+  required
+/>
 <label for="category">Parent category</label>
 <select name="categoryId" id="category" required>
   <% if(categoryObj!==undefined){%> <%allCategories.forEach(singleCategory=>{%>
