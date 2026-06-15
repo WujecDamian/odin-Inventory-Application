@@ -21,7 +21,7 @@
         >
         <button>Edit</button>
         <%-include('./Partials/modal/forms/editForms/editModal',{typeEditForm:"categoryEditForm",
-        Id:category.id,toEdit:"" }) %>
+        Id:category.id,toEdit:"",category }) %>
         <a href="/delete/<%=category.id%>"><button>Delete</button></a>
       </div>
       <%})%>
