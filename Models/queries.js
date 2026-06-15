@@ -79,6 +79,33 @@ async function createPart(
   );
 }
 
+// UPDATES
+async function updateCategory(categoryId, name) {
+  pool.query("UPDATE categories SET name = $1 WHERE id = $2", [
+    name,
+    categoryId,
+  ]);
+}
+async function updateSubcategory(subcategoryId, name, categoryId) {
+  pool.query(
+    "UPDATE subcategories SET (name,category_id) = ($2,$3) WHERE id = ($1)",
+    [subcategoryId, name, categoryId],
+  );
+}
+async function updatePart(
+  brand,
+  model,
+  price,
+  quantity,
+  subcategoryId,
+  partId,
+) {
+  pool.query(
+    "UPDATE parts SET (brand,model,price,quantity,subcategory_id) = ($1,$2,$3,$4,$5) WHERE id = ($6)",
+    [brand, model, price, quantity, subcategoryId, partId],
+  );
+}
+
 module.exports = {
   getCategories,
   getCategory,
@@ -91,4 +118,7 @@ module.exports = {
   createCategory,
   createSubcategory,
   createPart,
+  updateCategory,
+  updateSubcategory,
+  updatePart,
 };
