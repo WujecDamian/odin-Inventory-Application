@@ -72,17 +72,11 @@ const validators = {
   ],
 };
 
-const validateForm = (req, res) => {
+const validateForm = (req, res, next) => {
   const type = req.query.type;
   const rules = validators[type] || [];
 
-  Promise.all(
-    rules
-      .map((rule) => {
-        rule.run(req);
-      })
-      .then(() => next()),
-  );
+  return Promise.all(rules.map((rule) => rule.run(req))).then(() => next());
 };
 
 module.exports = validateForm;
