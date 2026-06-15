@@ -4,7 +4,7 @@ const getSubcategories = async (req, res) => {
   if (!req.query.category) {
     const subcategories = await db.getAllSubcategories();
     const categories = await db.getCategories();
-    res.render("./subcategories", {
+    res.render("subcategories", {
       subcategories,
       categories,
       categoryObj: undefined,
@@ -14,7 +14,7 @@ const getSubcategories = async (req, res) => {
     const categoryObj = await db.getCategory(category);
     const allCategories = await db.getCategories();
     const subcategories = await db.getSubcategories(category);
-    res.render("./subcategories", {
+    res.render("subcategories", {
       subcategories,
       categoryObj,
       allCategories,
