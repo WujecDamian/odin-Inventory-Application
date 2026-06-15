@@ -1,0 +1,30 @@
+<label for="brand">Brand</label>
+<input type="text" name="brand" required />
+<label for="model">Model</label>
+<input type="text" name="model" required />
+<label for="price">Price ($)</label>
+<input type="number" name="price" step="0.01" required />
+<label for="quantity">Quantity</label>
+<input type="number" name="quantity" required />
+<label for="subcategoryId">Parent subcategory</label>
+<select name="subcategoryId" id="subcategory" required>
+  <% if(subcategoryObj!==undefined){%>
+  <option value="<%=subcategoryObj.id%>"><%=subcategoryObj.name%></option>
+  <% } else if(subcategories!==undefined){%>
+  <%subcategories.forEach(singleSubcategory=>{%>
+  <option value="<%=singleSubcategory.id%>"><%=singleSubcategory.name%></option>
+  <%})%> <%}%>
+  <!--  -->
+  <% if(subcategoryObj!==undefined){%>
+  <%allSubcategories.forEach(singleSubcategory=>{%>
+  <%if(singleSubcategory.name===subcategoryObj.name){%>
+  <option value="<%=singleSubcategory.id%> " selected="selected">
+    <%=singleSubcategory.name%>
+  </option>
+  <%}else{%>
+  <option value="<%=singleSubcategory.id%>"><%=singleSubcategory.name%></option>
+  <%}%> <%})%> <% } else if(subcategories!==undefined){%>
+  <%subcategories.forEach(singleSubcategory=>{%>
+  <option value="<%=singleSubcategory.id%>"><%=singleSubcategory.name%></option>
+  <%})%> <%}%>
+</select>

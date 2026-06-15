@@ -17,6 +17,9 @@
         <img src="<%= part.image_url %>" alt="" />
 
         <a href="/part?<%=part.name%>"><%=part.brand%><%=part.model%></a>
+        <button>Edit</button>
+        <%-include('./Partials/modal/forms/editForms/editModal',{typeEditForm:"partEditForm",
+        Id:part.id,toEdit:"part" }) %>
       </div>
       <%})%>
       <button onclick="" class="add__category__btn">+</button>
