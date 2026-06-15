@@ -85,7 +85,9 @@ const handleForm = async (req, res) => {
         subcategoryId,
       );
     }
-    res.redirect(req.get("Referrer"));
+    setTimeout(() => {
+      res.redirect(req.get("Referrer"));
+    }, 500);
   } catch (err) {
     console.error(err);
 
