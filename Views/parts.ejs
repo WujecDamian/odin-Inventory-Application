@@ -19,7 +19,7 @@
         <a href="/part?<%=part.name%>"><%=part.brand%><%=part.model%></a>
         <button>Edit</button>
         <%-include('./Partials/modal/forms/editForms/editModal',{typeEditForm:"partEditForm",
-        Id:part.id,toEdit:"part" }) %>
+        Id:part.id,toEdit:"part",part }) %>
         <a href="part/delete/<%=part.id%>"><button>Delete</button></a>
       </div>
       <%})%>

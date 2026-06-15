@@ -1,12 +1,18 @@
 <input type="hidden" name="type" value="part" />
 <label for="brand">Brand</label>
-<input type="text" name="brand" required />
+<input type="text" name="brand" value="<%=part.brand%>" required />
 <label for="model">Model</label>
-<input type="text" name="model" required />
+<input type="text" name="model" value="<%=part.model%>" required />
 <label for="price">Price ($)</label>
-<input type="number" name="price" step="0.01" required />
+<input
+  type="number"
+  name="price"
+  step="0.01"
+  value="<%=part.price%>"
+  required
+/>
 <label for="quantity">Quantity</label>
-<input type="number" name="quantity" required />
+<input type="number" name="quantity" value="<%=part.quantity%>" required />
 <label for="subcategoryId">Parent subcategory</label>
 <select name="subcategoryId" id="subcategory" required>
   <% if(subcategoryObj!==undefined){%>
