@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS subcategories(
     name VARCHAR (255) NOT NULL,
     image_url TEXT,
     image_public_id TEXT,
-    category_id INTEGER NOT NULL REFERENCES categories(id)
+    category_id INTEGER NOT NULL REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS parts(
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS parts(
     quantity INTEGER NOT NULL,
     image_url TEXT,
     image_public_id TEXT,
-    subcategory_id INTEGER NOT NULL REFERENCES subcategories(id)
+    subcategory_id INTEGER NOT NULL REFERENCES subcategories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS attributes(
@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS part_attributes(
     value_number NUMERIC,
 
     PRIMARY KEY (part_id,attribute_id),
-    FOREIGN KEY (part_id) REFERENCES parts(id),
-    FOREIGN KEY (attribute_id) REFERENCES attributes(id)
+    FOREIGN KEY (part_id) REFERENCES parts(id) ON DELETE CASCADE,
+    FOREIGN KEY (attribute_id) REFERENCES attributes(id) ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS subcategory_attributes(
     subcategory_id INTEGER NOT NULL,
@@ -48,8 +48,8 @@ CREATE TABLE IF NOT EXISTS subcategory_attributes(
 
     PRIMARY KEY (subcategory_id,attribute_id),
 
-    FOREIGN KEY (subcategory_id) REFERENCES subcategories(id),
-    FOREIGN KEY (attribute_id) REFERENCES attributes(id)
+    FOREIGN KEY (subcategory_id) REFERENCES subcategories(id) ON DELETE CASCADE,
+    FOREIGN KEY (attribute_id) REFERENCES attributes(id) ON DELETE CASCADE
 );
 
 INSERT INTO categories (name,image_url,image_public_id) VALUES
