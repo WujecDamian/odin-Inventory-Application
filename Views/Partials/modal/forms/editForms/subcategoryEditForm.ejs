@@ -1,0 +1,17 @@
+<input type="hidden" name="type" value="category" />
+<label for="name">Category name</label>
+<input type="text" name="name" id="name" required />
+<label for="category">Parent category</label>
+<select name="categoryId" id="category" required>
+  <% if(categoryObj!==undefined){%> <%allCategories.forEach(singleCategory=>{%>
+  <%if(singleCategory.name===categoryObj.name){%>
+  <option value="<%=singleCategory.id%> " selected="selected">
+    <%=singleCategory.name%>
+  </option>
+  <%}else{%>
+  <option value="<%=singleCategory.id%>"><%=singleCategory.name%></option>
+  <%}%> <%})%> <% } else if(categories!==undefined){%>
+  <%categories.forEach(singleCategory=>{%>
+  <option value="<%=singleCategory.id%>"><%=singleCategory.name%></option>
+  <%})%> <%}%>
+</select>

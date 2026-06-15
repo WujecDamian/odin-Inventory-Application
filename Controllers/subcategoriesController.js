@@ -12,16 +12,27 @@ const getSubcategories = async (req, res) => {
   } else {
     const category = req.query.category;
     const categoryObj = await db.getCategory(category);
-
+    const allCategories = await db.getCategories();
     const subcategories = await db.getSubcategories(category);
     res.render("subcategories", {
       subcategories,
       categoryObj,
+      allCategories,
       categories: undefined,
     });
   }
 };
 
+const editSubcategory = async (req, res) => {
+  const subcategoryId = req.params.id;
+  const name = req.body.name;
+  const categoryId = req.body.categoryId;
+
+  await db.updateSubcategory(subcategoryId, name, categoryId);
+  res.redirect(req.get("Referrer"));
+};
+
 module.exports = {
   getSubcategories,
+  editSubcategory,
 };

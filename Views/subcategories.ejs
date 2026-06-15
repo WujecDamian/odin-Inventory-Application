@@ -18,6 +18,9 @@
         <a href="/part?subcategory=<%=subcategory.name%>"
           ><%=subcategory.name%></a
         >
+        <button>Edit</button>
+        <%-include('./Partials/modal/forms/editForms/editModal',{typeEditForm:"subcategoryEditForm",
+        Id:subcategory.id,toEdit:"subcategory" }) %>
       </div>
       <%})%>
       <button onclick="" class="add__category__btn">+</button>
