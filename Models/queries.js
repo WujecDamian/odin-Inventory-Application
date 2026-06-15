@@ -106,6 +106,17 @@ async function updatePart(
   );
 }
 
+// DELETES
+async function deleteCategory(categoryId) {
+  pool.query("DELETE FROM categories WHERE id=$1", [categoryId]);
+}
+async function deleteSubcategory(subcategoryId) {
+  pool.query("DELETE FROM subcategories WHERE id=$1", [subcategoryId]);
+}
+async function deletePart(partId) {
+  pool.query("DELETE FROM parts WHERE id=$1", [partId]);
+}
+
 module.exports = {
   getCategories,
   getCategory,
@@ -121,4 +132,7 @@ module.exports = {
   updateCategory,
   updateSubcategory,
   updatePart,
+  deleteCategory,
+  deleteSubcategory,
+  deletePart,
 };
